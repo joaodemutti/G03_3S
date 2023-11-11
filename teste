@@ -1,1 +1,3 @@
-teste
+
+INSERT INTO Usuario(NomeUsuario,RpUsuario,Email,Senha,CPF,Cargo,Estado)
+VALUES ('Carlos','12553','jose@correia.com','senha123','12345678911','Estudante','Trabalhando');
