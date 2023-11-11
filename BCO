@@ -1,4 +1,4 @@
-create database G03_3S;
+reate database G03_3S;
 
 use G03_3S;
 
@@ -12,32 +12,25 @@ CREATE TABLE Usuario (
 	Cargo varchar (255) NOT NULL,
 	Estado varchar(50) NOT NULL,
 	Foto varbinary(max),
-	IdSmartwatch varchar(30) NOT NULL,
-	IdComputador varchar(30) NOT NULL,
-	IdSmartphone varchar(30) NOT NULL
 );
+
 CREATE TABLE Aparelho(
 	IdAparelho int primary key,
-	NomeAParelho varchar(50)
-	
-
-foreign key (IdAparelho) references Usuario(IdUsuario)
+	NomeAparelho varchar(50),
+	IdUsuario int NOT NULL,
+	foreign key (IdUsuario) references Usuario(IdUsuario)
 );
 
 create table ponto (
-IdUsuarioPonto int primary key,
-Hora datetime,
-foreign key (IdUsuarioPonto)  references Usuario(IdUsuario)
+	IdUsuarioPonto int primary key,
+	Hora datetime,
+	foreign key (IdUsuarioPonto)  references Usuario(IdUsuario)
 );
+
 CREATE TABLE Documentacao (
 	IdDocumento int  NOT NULL  PRIMARY KEY,
-	Autor int NOT NULL,
+	UsuarioAutor int NOT NULL,
 	Documento varbinary(max) NOT NULL,
 	NomeDocumento varchar(255) NOT NULL,
-	 foreign key (Autor) references Usuario(IdUsuario)
+	foreign key (UsuarioAutor) references Usuario(IdUsuario)
 );
-INSERT INTO Usuario(NomeUsuario, RpUsuario, Email, Senha, CPF,Cargo,Estado,IdSmartwatch,IdComputador,IdSmartphone)
-VALUES ('Teste Testando da Silva', '123', 'teste@teste.com', 'teste123', '12312312311','Testando','Trabalhando','122333',
-'111111','123123');
-
-Select * from Usuario;
