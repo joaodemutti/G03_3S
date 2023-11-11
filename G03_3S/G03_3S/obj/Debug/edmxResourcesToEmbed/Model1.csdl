@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="G03_3SModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Aparelho">
+    <Key>
+      <PropertyRef Name="IdAparelho" />
+    </Key>
+    <Property Name="IdAparelho" Type="Int32" Nullable="false" />
+    <Property Name="NomeAparelho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Aparelho__IdUsua__5070F446" FromRole="Aparelho" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Documentacao">
+    <Key>
+      <PropertyRef Name="IdDocumento" />
+    </Key>
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioAutor" Type="Int32" Nullable="false" />
+    <Property Name="Documento" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="NomeDocumento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Documenta__Usuar__5629CD9C" FromRole="Documentacao" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="ponto">
+    <Key>
+      <PropertyRef Name="IdUsuarioPonto" />
+    </Key>
+    <Property Name="IdUsuarioPonto" Type="Int32" Nullable="false" />
+    <Property Name="Hora" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__ponto__IdUsuario__534D60F1" FromRole="ponto" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomeUsuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RpUsuario" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Senha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CPF" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cargo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Aparelhoes" Relationship="Self.FK__Aparelho__IdUsua__5070F446" FromRole="Usuario" ToRole="Aparelho" />
+    <NavigationProperty Name="Documentacaos" Relationship="Self.FK__Documenta__Usuar__5629CD9C" FromRole="Usuario" ToRole="Documentacao" />
+    <NavigationProperty Name="ponto" Relationship="Self.FK__ponto__IdUsuario__534D60F1" FromRole="Usuario" ToRole="ponto" />
+  </EntityType>
+  <Association Name="FK__Aparelho__IdUsua__5070F446">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Aparelho" Type="Self.Aparelho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Aparelho">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Documenta__Usuar__5629CD9C">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Documentacao" Type="Self.Documentacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Documentacao">
+        <PropertyRef Name="UsuarioAutor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ponto__IdUsuario__534D60F1">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="ponto" Type="Self.ponto" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="ponto">
+        <PropertyRef Name="IdUsuarioPonto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="G03_3SEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Aparelhoes" EntityType="Self.Aparelho" />
+    <EntitySet Name="Documentacaos" EntityType="Self.Documentacao" />
+    <EntitySet Name="pontoes" EntityType="Self.ponto" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__Aparelho__IdUsua__5070F446" Association="Self.FK__Aparelho__IdUsua__5070F446">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Aparelho" EntitySet="Aparelhoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Documenta__Usuar__5629CD9C" Association="Self.FK__Documenta__Usuar__5629CD9C">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Documentacao" EntitySet="Documentacaos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ponto__IdUsuario__534D60F1" Association="Self.FK__ponto__IdUsuario__534D60F1">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="ponto" EntitySet="pontoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="G03_3SModelStoreContainer" CdmEntityContainer="G03_3SEntities1">
+    <EntitySetMapping Name="Aparelhoes">
+      <EntityTypeMapping TypeName="G03_3SModel.Aparelho">
+        <MappingFragment StoreEntitySet="Aparelho">
+          <ScalarProperty Name="IdAparelho" ColumnName="IdAparelho" />
+          <ScalarProperty Name="NomeAparelho" ColumnName="NomeAparelho" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documentacaos">
+      <EntityTypeMapping TypeName="G03_3SModel.Documentacao">
+        <MappingFragment StoreEntitySet="Documentacao">
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="UsuarioAutor" ColumnName="UsuarioAutor" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="NomeDocumento" ColumnName="NomeDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pontoes">
+      <EntityTypeMapping TypeName="G03_3SModel.ponto">
+        <MappingFragment StoreEntitySet="ponto">
+          <ScalarProperty Name="IdUsuarioPonto" ColumnName="IdUsuarioPonto" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="G03_3SModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="NomeUsuario" ColumnName="NomeUsuario" />
+          <ScalarProperty Name="RpUsuario" ColumnName="RpUsuario" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

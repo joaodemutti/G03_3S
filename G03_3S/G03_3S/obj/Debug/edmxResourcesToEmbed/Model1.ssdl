@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="G03_3SModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Aparelho">
+    <Key>
+      <PropertyRef Name="IdAparelho" />
+    </Key>
+    <Property Name="IdAparelho" Type="int" Nullable="false" />
+    <Property Name="NomeAparelho" Type="varchar" MaxLength="50" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Documentacao">
+    <Key>
+      <PropertyRef Name="IdDocumento" />
+    </Key>
+    <Property Name="IdDocumento" Type="int" Nullable="false" />
+    <Property Name="UsuarioAutor" Type="int" Nullable="false" />
+    <Property Name="Documento" Type="varbinary(max)" Nullable="false" />
+    <Property Name="NomeDocumento" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ponto">
+    <Key>
+      <PropertyRef Name="IdUsuarioPonto" />
+    </Key>
+    <Property Name="IdUsuarioPonto" Type="int" Nullable="false" />
+    <Property Name="Hora" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomeUsuario" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="RpUsuario" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Senha" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CPF" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="Cargo" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Foto" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Aparelho__IdUsua__5070F446">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Aparelho" Type="Self.Aparelho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Aparelho">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Documenta__Usuar__5629CD9C">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Documentacao" Type="Self.Documentacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Documentacao">
+        <PropertyRef Name="UsuarioAutor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ponto__IdUsuario__534D60F1">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="ponto" Type="Self.ponto" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="ponto">
+        <PropertyRef Name="IdUsuarioPonto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="G03_3SModelStoreContainer">
+    <EntitySet Name="Aparelho" EntityType="Self.Aparelho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Documentacao" EntityType="Self.Documentacao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ponto" EntityType="Self.ponto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Aparelho__IdUsua__5070F446" Association="Self.FK__Aparelho__IdUsua__5070F446">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Aparelho" EntitySet="Aparelho" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Documenta__Usuar__5629CD9C" Association="Self.FK__Documenta__Usuar__5629CD9C">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Documentacao" EntitySet="Documentacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ponto__IdUsuario__534D60F1" Association="Self.FK__ponto__IdUsuario__534D60F1">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="ponto" EntitySet="ponto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

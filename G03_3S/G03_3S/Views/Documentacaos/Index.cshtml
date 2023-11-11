@@ -1,0 +1,45 @@
+﻿@model IEnumerable<G03_3S.Documentacao>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Documento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeDocumento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.NomeUsuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Documento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeDocumento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.NomeUsuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdDocumento }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdDocumento }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdDocumento })
+        </td>
+    </tr>
+}
+
+</table>
