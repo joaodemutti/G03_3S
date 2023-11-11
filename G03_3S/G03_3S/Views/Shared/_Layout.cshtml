@@ -15,21 +15,19 @@
         <a class="navbar-brand" href="#">
             <img src="~/Content/image 3.png" style="height:32px" />
         </a>
-        <ul class="navbar-nav flex-grow-1">
-            <li>@Html.ActionLink("Página Inicial", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-            <li>@Html.ActionLink("Usuarios", "INDEX", "usuarios", new { area = "" }, new { @class = "nav-link" })</li>
-            <li>@Html.ActionLink("Aparelhos", "INDEX", "Aparelhoes", new { area = "" }, new { @class = "nav-link" })</li>
-            <li>@Html.ActionLink("Ponto", "INDEX", "pontoes", new { area = "" }, new { @class = "nav-link" })</li>
-            <li>@Html.ActionLink("documentacaos", "INDEX", "documentacaos", new { area = "" }, new { @class = "nav-link" })</li>
-        </ul>
+        
         <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Perfil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Sair</a>
-            </li>
-
+          <li class="nav-item">@Html.ActionLink("Página Inicial", "Index", "Home", new { area = "" }, new { @class = "nav-link active" })</li>
+<li class="nav-item">@Html.ActionLink("Usuarios", "INDEX", "usuarios", new { area = "" }, new { @class = "nav-link active" })</li>
+<li class="nav-item">@Html.ActionLink("Aparelhos", "INDEX", "Aparelhoes", new { area = "" }, new { @class = "nav-link active" })</li>
+<li class="nav-item">@Html.ActionLink("Ponto", "INDEX", "pontoes", new { area = "" }, new { @class = "nav-link active" })</li>
+<li class="nav-item">@Html.ActionLink("documentacaos", "INDEX", "documentacaos", new { area = "" }, new { @class = "nav-link active" })</li>
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Perfil</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#">Sair</a>
+</li>
         </ul>
     </div>
 </nav>
