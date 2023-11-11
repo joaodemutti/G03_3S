@@ -1,6 +1,9 @@
+create database G03_3S;
+
 use G03_3S;
+
 CREATE TABLE Usuario (
-    IdUsuario int  NOT NULL  PRIMARY KEY,
+    IdUsuario int identity(1,1) PRIMARY KEY,
     NomeUsuario varchar(255) NOT NULL,
     RpUsuario int NOT NULL,
 	Email varchar(255) NOT NULL,
@@ -8,10 +11,12 @@ CREATE TABLE Usuario (
 	CPF varchar(11) NOT NULL,
 	Cargo varchar (255) NOT NULL,
 	Estado varchar(50) NOT NULL,
+	Foto varbinary(max),
 	IdSmartwatch varchar(30) NOT NULL,
 	IdComputador varchar(30) NOT NULL,
 	IdSmartphone varchar(30) NOT NULL
 );
+
 INSERT INTO Usuario(IdUsuario, NomeUsuario, RpUsuario, Email, Senha, CPF,Cargo,Estado,IdSmartwatch,IdComputador,IdSmartphone)
 VALUES ('2', 'Teste Testando da Silva', '123', 'teste@teste.com', 'teste123', '12312312311','Testando','Trabalhando','122333',
 '111111','123123');
