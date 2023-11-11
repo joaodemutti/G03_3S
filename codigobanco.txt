@@ -16,7 +16,13 @@ CREATE TABLE Usuario (
 	IdComputador varchar(30) NOT NULL,
 	IdSmartphone varchar(30) NOT NULL
 );
-
+CREATE TABLE Documentacao (
+	IdDocumento int  NOT NULL  PRIMARY KEY,
+	Autor int NOT NULL,
+	Documento varbinary(max) NOT NULL,
+	NomeDocumento varchar(255) NOT NULL,
+	 foreign key (Autor) references Usuario(IdUsuario)
+);
 INSERT INTO Usuario(IdUsuario, NomeUsuario, RpUsuario, Email, Senha, CPF,Cargo,Estado,IdSmartwatch,IdComputador,IdSmartphone)
 VALUES ('2', 'Teste Testando da Silva', '123', 'teste@teste.com', 'teste123', '12312312311','Testando','Trabalhando','122333',
 '111111','123123');
